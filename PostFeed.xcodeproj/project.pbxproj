@@ -23,6 +23,7 @@
 		321F0C2428783366007C2B13 /* PostDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C2328783366007C2B13 /* PostDetail.swift */; };
 		321F0C2628783CC5007C2B13 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C2528783CC5007C2B13 /* PostDetailViewController.swift */; };
 		321F0C2828783D66007C2B13 /* NatifePostsImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C2728783D66007C2B13 /* NatifePostsImageDownloader.swift */; };
+		329232792879914F00293E36 /* DateComponents+timeAgoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329232782879914F00293E36 /* DateComponents+timeAgoText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		321F0C2328783366007C2B13 /* PostDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetail.swift; sourceTree = "<group>"; };
 		321F0C2528783CC5007C2B13 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		321F0C2728783D66007C2B13 /* NatifePostsImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatifePostsImageDownloader.swift; sourceTree = "<group>"; };
+		329232782879914F00293E36 /* DateComponents+timeAgoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents+timeAgoText.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				321F0C0F28782F54007C2B13 /* URLSession+dataTask.swift */,
+				329232782879914F00293E36 /* DateComponents+timeAgoText.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				321F0C2428783366007C2B13 /* PostDetail.swift in Sources */,
 				321F0C2628783CC5007C2B13 /* PostDetailViewController.swift in Sources */,
 				321F0BFC28782E11007C2B13 /* PostFeedViewController.swift in Sources */,
+				329232792879914F00293E36 /* DateComponents+timeAgoText.swift in Sources */,
 				321F0C2228783220007C2B13 /* PostDataManager.swift in Sources */,
 				321F0C1828782FDC007C2B13 /* PostDownloaderProtocol.swift in Sources */,
 				321F0BF828782E11007C2B13 /* AppDelegate.swift in Sources */,
