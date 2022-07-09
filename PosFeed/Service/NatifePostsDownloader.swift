@@ -19,12 +19,13 @@ final class NatifePostsDownloader: PostDownloaderProtocol  {
     private var session = URLSession.shared
     
     //MARK: - Methods
+    /// Download all post.
     public func getAllPost(then completion: @escaping PostsResult) {
         let url = postInfo.urlForGetAllPost
         let dataTask =  session.downloadAndDecodePostData(from: url, andSaveIn: completion)
         dataTask.resume()
     }
-    
+    /// Download one post by id.
     public func getOnePost(by id: Int, then completion: @escaping PostDetailsResult) {
         postInfo.set(id)
         let url = postInfo.urlForGetOnePost
@@ -35,6 +36,7 @@ final class NatifePostsDownloader: PostDownloaderProtocol  {
 
 
 fileprivate extension URLSession {
+   /// Download and decode post date and store in completion.
     func downloadAndDecodePostData<T: Decodable>(from url: URL, andSaveIn completion:  @escaping (Result<T,PostError>) -> Void) -> URLSessionDataTask {
         let task = dataTask(with: url) { result in
             switch result {

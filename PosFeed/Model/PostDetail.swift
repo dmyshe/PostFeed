@@ -13,14 +13,15 @@ struct PostDetails: Codable {
 }
 
  struct PostDetail: Codable {
-    let postID, timeshamp: Int
+    let postID, timeStamp: Int
     let title, text: String
     let postImage: String
     let likesCount: Int
 
     enum CodingKeys: String, CodingKey {
         case postID = "postId"
-        case timeshamp, title, text, postImage
+        case timeStamp = "timeshamp"
+        case title, text, postImage
         case likesCount = "likes_count"
     }
 }
@@ -31,20 +32,13 @@ extension PostDetail {
     }
     
     var timeAgoText: String {
-        "10 day ago"
+        calculateWhenPostWasSent()
     }
     
-    private func calculateWhenPostWasSent() {
-        let time = calculateTimePost(in: [.second,.minute,.hour,.month,.year])
-  
-    }
-    
-    func calculateTimePost(in dateComponents: Set<Calendar.Component>) -> DateComponents {
-        let date = Date(timeIntervalSinceNow: Double(timeshamp))
-        let currentDate = Date()
-        let daysAgo = Calendar.current.dateComponents(dateComponents, from: date, to: currentDate)
-        
-        return daysAgo
+    private func calculateWhenPostWasSent() -> String {
+        let oldDate = Date(timeIntervalSince1970: Double(timeStamp))
+        let dateComponents = Date().calculateDiffBetweenCurrentDate(and: oldDate, in: [.second,.minute,.hour,.day,.month,.year])
+        return  dateComponents.timeAgoText
     }
 }
 

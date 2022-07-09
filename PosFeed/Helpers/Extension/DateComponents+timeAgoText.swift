@@ -9,33 +9,28 @@ import Foundation
 
 
 extension DateComponents {
-    
-     var timeAgoText: String {
-        convertTimeAgoToText()
+    private enum TimeAgoType: String {
+        case year,month,day,hour,minute,second
     }
     
+    public var timeAgoText: String {
+        convertTimeAgoToText()
+    }
     
     private func convertTimeAgoToText() -> String {
         switch self {
         case (let time) where time.year! >= 1:
-            let year = time.year! == 1 ? "year" : "years"
-            return "\(time.year!) \(year) ago"
+            return createTimeAgoText(for: .year, withValue: time.year!)
         case (let time) where time.month! < 12:
-            let month = time.month! == 1 ? "month" : "months"
-            return "\(time.month!) \(month) ago"
+            return createTimeAgoText(for: .month, withValue: time.month!)
         case (let time) where time.day! < 30:
-            let day = time.day! == 1 ? "day" : "days"
-            return "\(time.day!) \(day) ago"
+            return createTimeAgoText(for: .day, withValue: time.day!)
         case (let time) where time.hour! < 24:
-            let hour = time.hour! == 1 ? "hour" : "hours"
-            return "\(time.hour!) \(hour) ago"
+            return createTimeAgoText(for: .hour, withValue: time.hour!)
         case (let time) where time.minute! < 60:
-            let minute = time.minute! == 1 ? "minute" : "minutes"
-            return "\(time.minute!) \(minute) ago"
+            return createTimeAgoText(for: .minute, withValue: time.minute!)
         case (let time) where time.second! < 60:
-            let sec = time.minute! == 1 ? "second" : "seconds"
-            return "\(time.second!) \(sec) ago"
-            
+            return createTimeAgoText(for: .second, withValue: time.second!)
         default:
             print(" no calculate in method calculateWhenPostWasSent")
         }
@@ -43,7 +38,10 @@ extension DateComponents {
     }
 
     
-//    func example() {
-//        let dateComponents = self.day.des
-//    }
+    private func createTimeAgoText(for time: TimeAgoType, withValue value: Int) -> String {
+            let timeName = time.rawValue
+            let time = value == 1 ? timeName : "\(timeName)s"
+            let timeAgoText = "\(value) \(time) ago"
+            return timeAgoText
+    }
 }

@@ -18,6 +18,7 @@ final class NatifePostsImageDownloader {
     private var session = URLSession.shared
 
     //MARK: - Methods
+    /// Download image date from URL
     public func downloadImageData(with urlString: String,then completion: @escaping (Result< Data,DownloadImageError>) -> Void ) {
         guard let url = URL(string: urlString) else { return }
         

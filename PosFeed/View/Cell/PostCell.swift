@@ -27,7 +27,7 @@ final class PostCell: UITableViewCell {
     //MARK: - Delegate
     weak var delegate: PostCellDelegate?
     
-    //MARK: - Instantce Variable
+    //MARK: - Property
     private var isButtonPressed = false
     
     //MARK: - Methods
