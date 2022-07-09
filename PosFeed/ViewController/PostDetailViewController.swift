@@ -36,8 +36,7 @@ class PostDetailViewController: UIViewController {
     private func prepareUI() {
         guard let postDetail = postDetail else { return }
         
-        natifePostImageDownloader.downloadImageData(with: postDetail.postImage) { [weak self]
-            result in
+        natifePostImageDownloader.downloadImageData(with: postDetail.postImage) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -48,22 +47,22 @@ class PostDetailViewController: UIViewController {
                     
                     self.show(self.titleLabel, withText: postDetail.title)
                     self.show(self.textContent, withText: postDetail.text)
-                    self.show(self.likesLabel, withText: "❤️\(postDetail.likesCount)")
-                    self.show(self.daysAgoLabel, withText: "1 day ago")
+                    self.show(self.likesLabel, withText: postDetail.likesText)
+                    self.show(self.daysAgoLabel, withText: postDetail.timeAgoText)
                 }
             case .failure(let error):
                 print(error)
             }
         }
     }
-    
+}
+
+extension PostDetailViewController {
     private func show(_ label: UILabel, withText text: String) {
         label.text = text
         label.isHidden = false
     }
-}
 
-extension PostDetailViewController {
     private func setConstraints() {
         postImageView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false

@@ -42,7 +42,7 @@ class PostFeedViewController: UIViewController {
     private func prepareViews() {
         title = "Downloading..."
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 200
+        tableView.estimatedRowHeight = 230
     }
 }
 
@@ -94,8 +94,12 @@ extension PostFeedViewController: UITableViewDataSource {
 //MARK: - PostCellDelegate
 extension PostFeedViewController: PostCellDelegate {
     func expandCollapseButtonPressed(cell: UITableViewCell) {
-        if let cellIndex = tableView.indexPath(for: cell)?.row {
-            print("cell - \(cellIndex)")
+        if let cellIndex = tableView.indexPath(for: cell) {
+         
+            let cell = tableView.dequeueReusableCell(withIdentifier: PostCell.reuseIdentifier, for: cellIndex) as! PostCell
+//            cell.textContent.numberOfLines = 0
+//            tableView.layoutIfNeeded()
+//            tableView.reloadRows(at: [cellIndex], with: .automatic)
         }
     }
 }

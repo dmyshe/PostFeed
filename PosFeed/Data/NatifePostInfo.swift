@@ -8,17 +8,32 @@ import Foundation
 
 
 struct NatifePostInfo {
-    public var urlStringForGetAllPost: String {
+    //MARK: - Property
+    public var urlForGetAllPost: URL {
+        checkURL(with: urlStringForGetAllPost)!
+    }
+    
+    public var urlForGetOnePost: URL {
+        checkURL(with: urlStringForGetOnePost)!
+    }
+    
+    private var urlStringForGetAllPost: String {
         "\(baseUrl)/main.json"
     }
-    public var urlStringForGetOnePost: String {
+    private var urlStringForGetOnePost: String {
         "\(baseUrl)/posts/\(postID).json"
     }
-   
+    
     private var postID: Int = 0
     private let baseUrl = "https://raw.githubusercontent.com/anton-natife/jsons/master/api"
     
-    mutating func set(_ id: Int) {
+    //MARK: - Methods
+    public mutating func set(_ id: Int) {
         postID = id
+    }
+    
+    private func checkURL(with urlString: String) -> URL? {
+        guard let url = URL(string: urlString) else { return nil }
+        return url
     }
 }

@@ -19,17 +19,15 @@ final class NatifePostsDownloader: PostDownloaderProtocol  {
     private var session = URLSession.shared
     
     //MARK: - Methods
-    func getAllPost(then completion: @escaping PostsResult) {
-        guard let url = URL(string: postInfo.urlStringForGetAllPost) else { return }
-        
+    public func getAllPost(then completion: @escaping PostsResult) {
+        let url = postInfo.urlForGetAllPost
         let dataTask =  session.downloadAndDecodePostData(from: url, andSaveIn: completion)
         dataTask.resume()
     }
     
-    func getOnePost(by id: Int, then completion: @escaping PostDetailsResult) {
+    public func getOnePost(by id: Int, then completion: @escaping PostDetailsResult) {
         postInfo.set(id)
-        guard let url = URL(string: postInfo.urlStringForGetOnePost) else { return }
-        
+        let url = postInfo.urlForGetOnePost
         let dataTask = session.downloadAndDecodePostData(from: url, andSaveIn: completion)
         dataTask.resume()
     }

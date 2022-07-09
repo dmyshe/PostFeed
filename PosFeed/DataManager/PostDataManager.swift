@@ -60,9 +60,9 @@ final class PostDataManager {
     private func sortByDate() {
         sortedpostArrayByDate = []
         
-        sortedpostArrayByDate = postsArrayWithoutSorting.sorted(by: {
+        sortedpostArrayByDate = postsArrayWithoutSorting.sorted {
             $0.timeshamp > $1.timeshamp
-        })
+        }
     }
     
     private func sortByRatings() {
@@ -70,10 +70,6 @@ final class PostDataManager {
         
         sortedPostArrayByRatings = postsArrayWithoutSorting.sorted {
             $0.likesCount > $1.likesCount
-        }
-        
-        sortedPostArrayByRatings.forEach { post in
-            print("\(post.likesCount)")
         }
     }
     

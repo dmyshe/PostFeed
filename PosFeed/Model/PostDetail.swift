@@ -25,3 +25,27 @@ struct PostDetails: Codable {
     }
 }
 
+extension PostDetail {
+    var likesText: String {
+        "❤️\(likesCount)"
+    }
+    
+    var timeAgoText: String {
+        "10 day ago"
+    }
+    
+    private func calculateWhenPostWasSent() {
+        let time = calculateTimePost(in: [.second,.minute,.hour,.month,.year])
+  
+    }
+    
+    func calculateTimePost(in dateComponents: Set<Calendar.Component>) -> DateComponents {
+        let date = Date(timeIntervalSinceNow: Double(timeshamp))
+        let currentDate = Date()
+        let daysAgo = Calendar.current.dateComponents(dateComponents, from: date, to: currentDate)
+        
+        return daysAgo
+    }
+}
+
+
