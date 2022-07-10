@@ -18,11 +18,7 @@ final class PostDataManager {
         case none,date,ratings
     }
     //MARK: - Property
-    public var posts: [Post] = [] {
-        didSet {
-            delegate?.reloadTableView()
-        }
-    }
+    public var posts: [Post] = [] 
     //MARK: - Delegate
     public weak var delegate: PostDataManagerDelegate?
     
@@ -58,7 +54,6 @@ final class PostDataManager {
     
     private func sortByDate() {
         sortedpostArrayByDate = nil
-        
         sortedpostArrayByDate = postsArrayWithoutSorting.sorted {
             $0.timeStamp > $1.timeStamp
         }
@@ -66,7 +61,6 @@ final class PostDataManager {
     
     private func sortByRatings() {
         sortedPostArrayByRatings = nil
-        
         sortedPostArrayByRatings = postsArrayWithoutSorting.sorted {
             $0.likesCount > $1.likesCount
         }
@@ -81,5 +75,6 @@ final class PostDataManager {
         case .ratings:
             posts =  sortedPostArrayByRatings!
         }
+        delegate?.reloadTableView()
     }
 }

@@ -52,15 +52,14 @@ extension PostFeedViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let postID = postDataManager.posts[indexPath.row].postID
         
-        natifePostDownloader.getOnePost(by: postID) { [weak self] result in
-            guard let self = self else { return }
-            
+        let vc = createPostDetailVC()
+        navigationController?.pushViewController(vc, animated: true)
+
+        natifePostDownloader.getOnePost(by: postID) {  result in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
-                    let vc = self.createPostDetailVC()
                     vc.postDetail = data.post
-                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             case .failure(let error):
                 print(error)
@@ -95,11 +94,9 @@ extension PostFeedViewController: UITableViewDataSource {
 extension PostFeedViewController: PostCellDelegate {
     func expandCollapseButtonPressed(cell: UITableViewCell) {
         if let cellIndex = tableView.indexPath(for: cell) {
-         
-            let cell = tableView.dequeueReusableCell(withIdentifier: PostCell.reuseIdentifier, for: cellIndex) as! PostCell
-//            cell.textContent.numberOfLines = 0
-//            tableView.layoutIfNeeded()
-//            tableView.reloadRows(at: [cellIndex], with: .automatic)
+            let row = cellIndex.row
+            postDataManager.posts[row].isExpanded.toggle()
+            tableView.reloadRows(at: [cellIndex], with: .automatic)
         }
     }
 }
@@ -113,6 +110,7 @@ extension PostFeedViewController: PostDataManagerDelegate {
             self.navigationItem.rightBarButtonItem = self.sortButton
             self.sortButton.menu = self.createMenuWithSortDateAndRatings()
             self.tableView.isHidden = false
+            self.tableView.reloadData()
         }
     }
     
@@ -125,21 +123,17 @@ extension PostFeedViewController: PostDataManagerDelegate {
 
 extension PostFeedViewController {
     private func createMenuWithSortDateAndRatings() -> UIMenu {
-        let noSorting = UIAction(title: "No sorting",
-                                  image: .clockSystemIcon) { [weak self] _ in
+        let noSorting = UIAction(title: "No sorting", image: .clockSystemIcon) { [weak self] _ in
             guard let self = self else { return }
             self.postDataManager.sort(by: .none)
         }
-        
-        
-        let dateSorting = UIAction(title: "Sort by date",
-                                image: .clockSystemIcon) { [weak self] _ in
+
+        let dateSorting = UIAction(title: "Sort by date", image: .clockSystemIcon) { [weak self] _ in
             guard let self = self else { return }
             self.postDataManager.sort(by: .date)
         }
         
-        let ratingSorting = UIAction(title: "Sort by ratings",
-                                  image: .heartSystemIcon) { [weak self] action in
+        let ratingSorting = UIAction(title: "Sort by ratings", image: .heartSystemIcon) { [weak self] action in
             guard let self = self else { return }
             self.postDataManager.sort(by: .ratings)
         }

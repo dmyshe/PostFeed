@@ -20,6 +20,4 @@ extension Date {
         let dateComponents = Calendar.current.dateComponents(dateComponents, from: date, to: toDate)
         return dateComponents
     }
-    
-
 }

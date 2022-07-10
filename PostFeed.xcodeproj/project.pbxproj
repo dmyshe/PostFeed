@@ -24,7 +24,7 @@
 		321F0C2628783CC5007C2B13 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C2528783CC5007C2B13 /* PostDetailViewController.swift */; };
 		321F0C2828783D66007C2B13 /* NatifePostsImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C2728783D66007C2B13 /* NatifePostsImageDownloader.swift */; };
 		329232792879914F00293E36 /* DateComponents+timeAgoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329232782879914F00293E36 /* DateComponents+timeAgoText.swift */; };
-		3292327B2879B5BE00293E36 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3292327A2879B5BE00293E36 /* Date.swift */; };
+		3292327B2879B5BE00293E36 /* Date+calculateDiffBetweenCurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3292327A2879B5BE00293E36 /* Date+calculateDiffBetweenCurrentDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +47,7 @@
 		321F0C2528783CC5007C2B13 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		321F0C2728783D66007C2B13 /* NatifePostsImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatifePostsImageDownloader.swift; sourceTree = "<group>"; };
 		329232782879914F00293E36 /* DateComponents+timeAgoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents+timeAgoText.swift"; sourceTree = "<group>"; };
-		3292327A2879B5BE00293E36 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		3292327A2879B5BE00293E36 /* Date+calculateDiffBetweenCurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+calculateDiffBetweenCurrentDate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,15 +80,16 @@
 		321F0BF628782E11007C2B13 /* PosFeed */ = {
 			isa = PBXGroup;
 			children = (
-				321F0C202878320F007C2B13 /* DataManager */,
-				321F0C1C28783061007C2B13 /* View */,
-				321F0C1928782FF4007C2B13 /* Model */,
-				321F0C1428782F96007C2B13 /* Service */,
+				321F0C202878320F007C2B13 /* DataManagers */,
+				321F0C1C28783061007C2B13 /* Views */,
+				321F0C1928782FF4007C2B13 /* Models */,
+				321F0C1428782F96007C2B13 /* Services */,
 				321F0C1128782F61007C2B13 /* Data */,
 				321F0C0E28782F37007C2B13 /* Helpers */,
 				321F0C0B28782E23007C2B13 /* App */,
-				321F0C0D28782E3E007C2B13 /* ViewController */,
-				321F0C0C28782E2E007C2B13 /* Supporting Files */,
+				321F0C0D28782E3E007C2B13 /* Controllers */,
+				3292327C287A2C9700293E36 /* Storyboards */,
+				321F0C0C28782E2E007C2B13 /* Resourses */,
 				321F0C0528782E17007C2B13 /* Info.plist */,
 			);
 			path = PosFeed;
@@ -103,23 +104,21 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		321F0C0C28782E2E007C2B13 /* Supporting Files */ = {
+		321F0C0C28782E2E007C2B13 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
-				321F0BFD28782E11007C2B13 /* Main.storyboard */,
 				321F0C0028782E17007C2B13 /* Assets.xcassets */,
-				321F0C0228782E17007C2B13 /* LaunchScreen.storyboard */,
 			);
-			path = "Supporting Files";
+			path = Resourses;
 			sourceTree = "<group>";
 		};
-		321F0C0D28782E3E007C2B13 /* ViewController */ = {
+		321F0C0D28782E3E007C2B13 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				321F0BFB28782E11007C2B13 /* PostFeedViewController.swift */,
 				321F0C2528783CC5007C2B13 /* PostDetailViewController.swift */,
 			);
-			path = ViewController;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		321F0C0E28782F37007C2B13 /* Helpers */ = {
@@ -138,31 +137,31 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		321F0C1428782F96007C2B13 /* Service */ = {
+		321F0C1428782F96007C2B13 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				321F0C1528782FA2007C2B13 /* NatifePostsDownloader.swift */,
 				321F0C2728783D66007C2B13 /* NatifePostsImageDownloader.swift */,
 				321F0C1728782FDC007C2B13 /* PostDownloaderProtocol.swift */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
-		321F0C1928782FF4007C2B13 /* Model */ = {
+		321F0C1928782FF4007C2B13 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				321F0C1A2878304B007C2B13 /* Post.swift */,
 				321F0C2328783366007C2B13 /* PostDetail.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		321F0C1C28783061007C2B13 /* View */ = {
+		321F0C1C28783061007C2B13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				321F0C1D28783068007C2B13 /* Cell */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		321F0C1D28783068007C2B13 /* Cell */ = {
@@ -173,12 +172,12 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		321F0C202878320F007C2B13 /* DataManager */ = {
+		321F0C202878320F007C2B13 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
 				321F0C2128783220007C2B13 /* PostDataManager.swift */,
 			);
-			path = DataManager;
+			path = DataManagers;
 			sourceTree = "<group>";
 		};
 		321F0C2C287869D1007C2B13 /* Extension */ = {
@@ -186,9 +185,18 @@
 			children = (
 				321F0C0F28782F54007C2B13 /* URLSession+dataTask.swift */,
 				329232782879914F00293E36 /* DateComponents+timeAgoText.swift */,
-				3292327A2879B5BE00293E36 /* Date.swift */,
+				3292327A2879B5BE00293E36 /* Date+calculateDiffBetweenCurrentDate.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		3292327C287A2C9700293E36 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				321F0BFD28782E11007C2B13 /* Main.storyboard */,
+				321F0C0228782E17007C2B13 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,7 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				321F0C2428783366007C2B13 /* PostDetail.swift in Sources */,
-				3292327B2879B5BE00293E36 /* Date.swift in Sources */,
+				3292327B2879B5BE00293E36 /* Date+calculateDiffBetweenCurrentDate.swift in Sources */,
 				321F0C2628783CC5007C2B13 /* PostDetailViewController.swift in Sources */,
 				321F0BFC28782E11007C2B13 /* PostFeedViewController.swift in Sources */,
 				329232792879914F00293E36 /* DateComponents+timeAgoText.swift in Sources */,

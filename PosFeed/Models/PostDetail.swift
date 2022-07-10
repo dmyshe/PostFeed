@@ -1,32 +1,33 @@
 //
-//  Post.swift
+//  PostDetail.swift
 //  PosFeed
 //
-//  Created by Дмитро  on 06.07.2022.
+//  Created by Дмитро  on 07.07.2022.
 //
 
 import Foundation
 
-struct Posts: Codable {
-    let posts: [Post]
+
+struct PostDetails: Codable {
+    let post: PostDetail
 }
 
-struct Post: Codable {
+ struct PostDetail: Codable {
     let postID, timeStamp: Int
-    let title, previewText: String
+    let title, textContent: String
+    let postImage: String
     let likesCount: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case postID = "postId"
         case timeStamp = "timeshamp"
-        case title
-        case previewText = "preview_text"
+        case textContent = "text"
+        case title, postImage
         case likesCount = "likes_count"
     }
 }
 
-
-extension Post {
+extension PostDetail {
     var likesText: String {
         "❤️\(likesCount)"
     }
@@ -41,3 +42,5 @@ extension Post {
         return  dateComponents.timeAgoText
     }
 }
+
+

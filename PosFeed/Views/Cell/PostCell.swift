@@ -27,16 +27,14 @@ final class PostCell: UITableViewCell {
     //MARK: - Delegate
     weak var delegate: PostCellDelegate?
     
-    //MARK: - Property
-    private var isButtonPressed = false
-    
     //MARK: - Methods
     public func configure(with model: Post) {
         titleLabel.text = model.title
-        textContent.text = model.previewText
         likeLabel.text = model.likesText
         daysAgoLabel.text = model.timeAgoText
-        expandCollapseToogleButton.layer.cornerRadius = 10
+        
+        setTextContent(with: model.previewText, isExpanded: model.isExpanded)
+        setButtonTitle(with: model.isExpanded)
     }
     
     override func prepareForReuse() {
@@ -46,16 +44,31 @@ final class PostCell: UITableViewCell {
         daysAgoLabel.text = nil
     }
     
-    //MARK: - IBActions
-    @IBAction private func expandCollapseButtonPressed(_ sender: UIButton) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        expandCollapseToogleButton.layer.cornerRadius = 10
+    }
+    
+    
+    private func setButtonTitle(with isButtonPressed: Bool) {
         if isButtonPressed {
             expandCollapseToogleButton.setTitle("Collapse", for: .normal)
+            let mir = String(describing: type(of: self))
+            print(mir)
         } else {
             expandCollapseToogleButton.setTitle("Expand", for: .normal)
         }
+    }
+    
+    private func setTextContent(with text: String, isExpanded: Bool) {
+        textContent.text = text
+        textContent.numberOfLines = isExpanded ? 0 : 2
         
-        isButtonPressed.toggle()
-        
+    }
+    
+    
+    //MARK: - IBActions
+    @IBAction private func expandCollapseButtonPressed(_ sender: UIButton) {
         delegate?.expandCollapseButtonPressed(cell: self)
     }
 }

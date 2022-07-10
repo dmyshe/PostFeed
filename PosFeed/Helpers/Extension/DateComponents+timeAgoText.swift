@@ -36,12 +36,12 @@ extension DateComponents {
         }
         return " "
     }
-
+    
     
     private func createTimeAgoText(for time: TimeAgoType, withValue value: Int) -> String {
-            let timeName = time.rawValue
-            let time = value == 1 ? timeName : "\(timeName)s"
-            let timeAgoText = "\(value) \(time) ago"
-            return timeAgoText
+        let timeName = time.rawValue
+        let time = value == 1 ? timeName : "\(timeName)s"
+        let timeAgoText = "\(value) \(time) ago"
+        return timeAgoText
     }
 }
