@@ -36,6 +36,10 @@ extension Post {
         calculateWhenPostWasSent()
     }
     
+    var hasMinimumPreviewText: Bool {
+        previewText.count > 90
+    }
+
     private func calculateWhenPostWasSent() -> String {
         let oldDate = Date(timeIntervalSince1970: Double(timeStamp))
         let dateComponents = Date().calculateDiffBetweenCurrentDate(and: oldDate, in: [.second,.minute,.hour,.day,.month,.year])
