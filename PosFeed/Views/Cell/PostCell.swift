@@ -32,8 +32,7 @@ final class PostCell: UITableViewCell {
         titleLabel.text = model.title
         likeLabel.text = model.likesText
         daysAgoLabel.text = model.timeAgoText
-        print(model.previewText.count)
-        setTextContent(with: model.previewText, isExpanded: model.isExpanded)
+        setTextContent(with: model.previewText, isShowFullText: model.isExpanded)
         setButtonTitle(with: model.isExpanded, hasMinimumPreviewText: model.hasMinimumPreviewText)
     }
     
@@ -65,8 +64,8 @@ final class PostCell: UITableViewCell {
         }
     }
     
-    private func setTextContent(with text: String, isExpanded: Bool) {
+    private func setTextContent(with text: String, isShowFullText: Bool) {
         textContent.text = text
-        textContent.numberOfLines = isExpanded ? 0 : 2
+        textContent.numberOfLines = isShowFullText ? 0 : 2
     }
 }
