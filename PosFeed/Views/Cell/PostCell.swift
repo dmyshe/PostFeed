@@ -23,7 +23,7 @@ final class PostCell: UITableViewCell {
     @IBOutlet private weak var daysAgoLabel: UILabel!
     @IBOutlet private weak var expandCollapseToogleButton: UIButton!
     @IBOutlet private weak var stackView: UIStackView!
-        
+    
     //MARK: - Delegate
     weak var delegate: PostCellDelegate?
     
@@ -32,9 +32,9 @@ final class PostCell: UITableViewCell {
         titleLabel.text = model.title
         likeLabel.text = model.likesText
         daysAgoLabel.text = model.timeAgoText
-        
+        print(model.previewText.count)
         setTextContent(with: model.previewText, isExpanded: model.isExpanded)
-        setButtonTitle(with: model.isExpanded)
+        setButtonTitle(with: model.isExpanded, hasMinimumPreviewText: model.hasMinimumPreviewText)
     }
     
     override func prepareForReuse() {
@@ -42,6 +42,7 @@ final class PostCell: UITableViewCell {
         textContent.text = nil
         likeLabel.text = nil
         daysAgoLabel.text = nil
+        expandCollapseToogleButton.isHidden = false 
     }
     
     override func awakeFromNib() {
@@ -54,17 +55,18 @@ final class PostCell: UITableViewCell {
         delegate?.expandCollapseButtonPressed(cell: self)
     }
     
-    private func setButtonTitle(with isButtonPressed: Bool) {
-        if isButtonPressed {
+    private func setButtonTitle(with isButtonPressed: Bool, hasMinimumPreviewText: Bool) {
+        if !isButtonPressed && hasMinimumPreviewText {
+            expandCollapseToogleButton.setTitle("Expand", for: .normal)
+        } else if hasMinimumPreviewText {
             expandCollapseToogleButton.setTitle("Collapse", for: .normal)
         } else {
-            expandCollapseToogleButton.setTitle("Expand", for: .normal)
+            expandCollapseToogleButton.isHidden = !hasMinimumPreviewText
         }
     }
     
     private func setTextContent(with text: String, isExpanded: Bool) {
         textContent.text = text
         textContent.numberOfLines = isExpanded ? 0 : 2
-        
     }
 }
