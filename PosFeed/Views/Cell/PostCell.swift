@@ -49,12 +49,14 @@ final class PostCell: UITableViewCell {
         expandCollapseToogleButton.layer.cornerRadius = 10
     }
     
+    //MARK: - IBActions
+    @IBAction private func expandCollapseButtonPressed(_ sender: UIButton) {
+        delegate?.expandCollapseButtonPressed(cell: self)
+    }
     
     private func setButtonTitle(with isButtonPressed: Bool) {
         if isButtonPressed {
             expandCollapseToogleButton.setTitle("Collapse", for: .normal)
-            let mir = String(describing: type(of: self))
-            print(mir)
         } else {
             expandCollapseToogleButton.setTitle("Expand", for: .normal)
         }
@@ -64,11 +66,5 @@ final class PostCell: UITableViewCell {
         textContent.text = text
         textContent.numberOfLines = isExpanded ? 0 : 2
         
-    }
-    
-    
-    //MARK: - IBActions
-    @IBAction private func expandCollapseButtonPressed(_ sender: UIButton) {
-        delegate?.expandCollapseButtonPressed(cell: self)
     }
 }
