@@ -36,7 +36,7 @@ extension Post {
         calculateWhenPostWasSent()
     }
     
-    var hasMinimumPreviewText: Bool {
+    var previewTextHasMinimumWordCount: Bool {
         previewText.count > 90
     }
 

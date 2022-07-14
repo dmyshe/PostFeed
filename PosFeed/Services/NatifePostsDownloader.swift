@@ -6,7 +6,6 @@
 //
 import Foundation
 
-
 enum PostError: Error {
     case urlError
     case networkFailure(Error)
@@ -14,15 +13,15 @@ enum PostError: Error {
 }
 
 final class NatifePostsDownloader: PostDownloaderProtocol  {
-    //MARK: - Property
+    //MARK: - Properties
     private var postInfo = NatifePostInfo()
-    private var session = URLSession.shared
+    private let session = URLSession.shared
     
     //MARK: - Methods
     /// Download all post.
     public func getAllPost(then completion: @escaping PostsHandler) {
         let url = postInfo.urlForGetAllPost
-        let dataTask =  session.downloadAndDecodePostData(from: url, andSaveIn: completion)
+        let dataTask = session.downloadAndDecodePostData(from: url, andSaveIn: completion)
         dataTask.resume()
     }
     /// Download one post by id.

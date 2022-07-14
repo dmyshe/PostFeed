@@ -26,18 +26,18 @@ class PostDetailViewController: UIViewController {
     }
     
     //MARK: - Services
-    private let natifePostImageDownloader = NatifePostsImageDownloader()
+    private let natifePostImageDownloader: PostImageDownloaderProtocol = NatifePostsImageDownloader()
     
     //MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setConstraints()
+        setupLayout()
     }
     
     private func prepareUI() {
-        guard let postDetail = postDetail else { return }
+        guard let postDetail = postDetail, let url = URL(string: postDetail.postImageUrlString) else { return }
         
-        natifePostImageDownloader.downloadImageData(with: postDetail.postImage) { [weak self] result in
+        natifePostImageDownloader.downloadImageData(with: url) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -64,41 +64,55 @@ extension PostDetailViewController {
         label.isHidden = false
     }
 
-    private func setConstraints() {
+    private func setupLayout() {
         postImageView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         textContent.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        scrollView.isDirectionalLockEnabled = false
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        daysAgoLabel.translatesAutoresizingMaskIntoConstraints = false
+        likesLabel.translatesAutoresizingMaskIntoConstraints = false
         
         let defaultPadding: CGFloat = 20
         let imageHeight: CGFloat = 150
         
+        let contentLayoutGuid = scrollView.contentLayoutGuide
+        let scrollFrameLayoutGuid = scrollView.frameLayoutGuide
+        
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -defaultPadding),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-            postImageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            postImageView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
-            postImageView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
+            scrollFrameLayoutGuid.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollFrameLayoutGuid.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollFrameLayoutGuid.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollFrameLayoutGuid.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -defaultPadding),
+            
+            postImageView.topAnchor.constraint(equalTo: contentLayoutGuid.topAnchor),
+            postImageView.leadingAnchor.constraint(equalTo: contentLayoutGuid.leadingAnchor),
+            postImageView.trailingAnchor.constraint(equalTo: contentLayoutGuid.trailingAnchor),
+            postImageView.widthAnchor.constraint(equalTo: view.widthAnchor),
             postImageView.heightAnchor.constraint(equalToConstant: imageHeight),
             
             titleLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor),
-            titleLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: defaultPadding),
-            titleLabel.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -defaultPadding),
+            titleLabel.leadingAnchor.constraint(equalTo: contentLayoutGuid.leadingAnchor, constant: defaultPadding),
+            titleLabel.trailingAnchor.constraint(equalTo: contentLayoutGuid.trailingAnchor, constant: -defaultPadding),
             
             textContent.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            textContent.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: defaultPadding),
-            textContent.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -defaultPadding),
+            textContent.leadingAnchor.constraint(equalTo: contentLayoutGuid.leadingAnchor, constant: defaultPadding),
+            textContent.trailingAnchor.constraint(equalTo: contentLayoutGuid.trailingAnchor, constant: -defaultPadding),
                     
             stackView.topAnchor.constraint(equalTo: textContent.bottomAnchor, constant: defaultPadding),
-            stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: defaultPadding),
-            stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -defaultPadding),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -defaultPadding)
+            stackView.leadingAnchor.constraint(equalTo: contentLayoutGuid.leadingAnchor, constant: defaultPadding),
+
+            stackView.trailingAnchor.constraint(equalTo: contentLayoutGuid.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: contentLayoutGuid.bottomAnchor, constant: -defaultPadding),
+            
+            
+            daysAgoLabel.trailingAnchor.constraint(greaterThanOrEqualTo: stackView.trailingAnchor, constant: -5),
+            daysAgoLabel.leadingAnchor.constraint(greaterThanOrEqualTo: likesLabel.trailingAnchor, constant: 5)
+//
         ])
     }
 }

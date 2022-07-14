@@ -10,6 +10,7 @@ import Foundation
 protocol PostDownloaderProtocol {
     typealias PostsHandler = (Result<Posts,PostError>) -> Void
     typealias PostDetailHandler = (Result<PostDetails,PostError>) -> Void
+    
     func getAllPost(then completion: @escaping PostsHandler)
     func getOnePost(by id: Int, then completion: @escaping PostDetailHandler)
 }

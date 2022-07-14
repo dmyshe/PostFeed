@@ -6,7 +6,6 @@
 //
 import Foundation
 
-
 struct NatifePostInfo {
     //MARK: - Property
     public var urlForGetAllPost: URL {

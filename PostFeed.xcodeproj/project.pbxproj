@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32061FDA287F739700F33790 /* PostImageDownloaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32061FD9287F739600F33790 /* PostImageDownloaderProtocol.swift */; };
 		321F0BF828782E11007C2B13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0BF728782E11007C2B13 /* AppDelegate.swift */; };
 		321F0BFA28782E11007C2B13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0BF928782E11007C2B13 /* SceneDelegate.swift */; };
 		321F0BFC28782E11007C2B13 /* PostFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0BFB28782E11007C2B13 /* PostFeedViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32061FD9287F739600F33790 /* PostImageDownloaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDownloaderProtocol.swift; sourceTree = "<group>"; };
 		321F0BF428782E11007C2B13 /* PostFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		321F0BF728782E11007C2B13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		321F0BF928782E11007C2B13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3203EC2E287DACFB00AF7FEF /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				321F0BF728782E11007C2B13 /* AppDelegate.swift */,
+				321F0BF928782E11007C2B13 /* SceneDelegate.swift */,
+			);
+			path = "App Delegate";
+			sourceTree = "<group>";
+		};
+		3203EC2F287DAD7500AF7FEF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				321F0C0228782E17007C2B13 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		321F0BEB28782E11007C2B13 = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +108,6 @@
 				321F0C0B28782E23007C2B13 /* App */,
 				321F0C0D28782E3E007C2B13 /* Controllers */,
 				3292327C287A2C9700293E36 /* Storyboards */,
-				321F0C0C28782E2E007C2B13 /* Resourses */,
 				321F0C0528782E17007C2B13 /* Info.plist */,
 			);
 			path = PosFeed;
@@ -98,8 +116,9 @@
 		321F0C0B28782E23007C2B13 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				321F0BF728782E11007C2B13 /* AppDelegate.swift */,
-				321F0BF928782E11007C2B13 /* SceneDelegate.swift */,
+				3203EC2E287DACFB00AF7FEF /* App Delegate */,
+				3203EC2F287DAD7500AF7FEF /* Storyboards */,
+				321F0C0C28782E2E007C2B13 /* Resourses */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -143,6 +162,7 @@
 				321F0C1528782FA2007C2B13 /* NatifePostsDownloader.swift */,
 				321F0C2728783D66007C2B13 /* NatifePostsImageDownloader.swift */,
 				321F0C1728782FDC007C2B13 /* PostDownloaderProtocol.swift */,
+				32061FD9287F739600F33790 /* PostImageDownloaderProtocol.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -194,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				321F0BFD28782E11007C2B13 /* Main.storyboard */,
-				321F0C0228782E17007C2B13 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -282,6 +301,7 @@
 				321F0C1328782F6C007C2B13 /* NatifePostInfo.swift in Sources */,
 				321F0C1F28783074007C2B13 /* PostCell.swift in Sources */,
 				321F0C2828783D66007C2B13 /* NatifePostsImageDownloader.swift in Sources */,
+				32061FDA287F739700F33790 /* PostImageDownloaderProtocol.swift in Sources */,
 				321F0BFA28782E11007C2B13 /* SceneDelegate.swift in Sources */,
 				321F0C1628782FA2007C2B13 /* NatifePostsDownloader.swift in Sources */,
 				321F0C1028782F54007C2B13 /* URLSession+dataTask.swift in Sources */,

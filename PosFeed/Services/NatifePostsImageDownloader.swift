@@ -13,15 +13,13 @@ enum DownloadImageError: Error {
     case invalidData
 }
 
-final class NatifePostsImageDownloader {
-    //MARK: - Property
-    private var session = URLSession.shared
+final class NatifePostsImageDownloader: PostImageDownloaderProtocol {
+    //MARK: - Properties
+    private let session = URLSession.shared
 
     //MARK: - Methods
     /// Download image date from URL
-    public func downloadImageData(with urlString: String,then completion: @escaping (Result< Data,DownloadImageError>) -> Void ) {
-        guard let url = URL(string: urlString) else { return }
-        
+    public func downloadImageData(with url: URL ,then completion: @escaping DataHandler) {
         let task = session.dataTask(with: url) { result in
             switch result {
             case .success(let data):

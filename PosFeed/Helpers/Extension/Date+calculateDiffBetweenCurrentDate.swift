@@ -15,9 +15,6 @@ extension Date {
     }
     /// Calculate difference between one date and another.
     public func calculateDiffBetween(_ date: Date, to toDate: Date ,in dateComponents: Set<Calendar.Component>) -> DateComponents {
-        let date = date
-        let toDate = toDate
-        let dateComponents = Calendar.current.dateComponents(dateComponents, from: date, to: toDate)
-        return dateComponents
+        return  Calendar.current.dateComponents(dateComponents, from: date, to: toDate)
     }
 }

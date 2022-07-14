@@ -17,14 +17,14 @@ final class PostDataManager {
     enum PostSortType {
         case none,date,ratings
     }
-    //MARK: - Property
+    //MARK: - Properties
     public var posts: [Post] = [] 
     //MARK: - Delegate
     public weak var delegate: PostDataManagerDelegate?
     
     private var postsArrayWithoutSorting: [Post] = []
-    private var sortedPostArrayByRatings: [Post]?
-    private var sortedpostArrayByDate: [Post]?
+    private var sortedPostArrayByRatings: [Post] = []
+    private var sortedpostArrayByDate: [Post] = []
     
     private var currentSelectedPostArrayType: PostSortType = .none {
         didSet {
@@ -53,14 +53,12 @@ final class PostDataManager {
     }
     
     private func sortByDate() {
-        sortedpostArrayByDate = nil
         sortedpostArrayByDate = postsArrayWithoutSorting.sorted {
             $0.timeStamp > $1.timeStamp
         }
     }
     
     private func sortByRatings() {
-        sortedPostArrayByRatings = nil
         sortedPostArrayByRatings = postsArrayWithoutSorting.sorted {
             $0.likesCount > $1.likesCount
         }
@@ -71,9 +69,9 @@ final class PostDataManager {
         case .none:
             posts = postsArrayWithoutSorting
         case .date:
-            posts =  sortedpostArrayByDate!
+            posts =  sortedpostArrayByDate
         case .ratings:
-            posts =  sortedPostArrayByRatings!
+            posts =  sortedPostArrayByRatings
         }
         delegate?.reloadTableView()
     }

@@ -5,10 +5,7 @@
 //  Created by Дмитро  on 06.07.2022.
 //
 
-import Foundation
-
 import UIKit
-
 
 protocol PostCellDelegate: AnyObject {
     func expandCollapseButtonPressed(cell: UITableViewCell)
@@ -18,7 +15,7 @@ final class PostCell: UITableViewCell {
     static let reuseIdentifier = "PostCell"
     //MARK: - IBOultets
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var textContent: UILabel!
+    @IBOutlet private weak var previewTextLabel: UILabel!
     @IBOutlet private weak var likeLabel: UILabel!
     @IBOutlet private weak var daysAgoLabel: UILabel!
     @IBOutlet private weak var expandCollapseToogleButton: UIButton!
@@ -28,17 +25,20 @@ final class PostCell: UITableViewCell {
     weak var delegate: PostCellDelegate?
     
     //MARK: - Methods
-    public func configure(with model: Post) {
-        titleLabel.text = model.title
-        likeLabel.text = model.likesText
-        daysAgoLabel.text = model.timeAgoText
-        setTextContent(with: model.previewText, isShowFullText: model.isExpanded)
-        setButtonTitle(with: model.isExpanded, hasMinimumPreviewText: model.hasMinimumPreviewText)
+    public func configure(titleText: String, previewText: String, likesText: String, timeAgoText: String, isExpanded: Bool, previewTextHasMinimumWordCount: Bool) {
+        titleLabel.text = titleText
+        likeLabel.text = likesText
+        daysAgoLabel.text = timeAgoText
+        setPreviewTextLabel(with: previewText,
+                            isShowFullText: isExpanded,
+                            previewTextHasMinimumWordCount: previewTextHasMinimumWordCount)
+        checkButtonTitle(with: isExpanded,
+                         previewTextHasMinimumWordCount:  previewTextHasMinimumWordCount)
     }
     
     override func prepareForReuse() {
         titleLabel.text = nil
-        textContent.text = nil
+        previewTextLabel.text = nil
         likeLabel.text = nil
         daysAgoLabel.text = nil
         expandCollapseToogleButton.isHidden = false 
@@ -54,18 +54,18 @@ final class PostCell: UITableViewCell {
         delegate?.expandCollapseButtonPressed(cell: self)
     }
     
-    private func setButtonTitle(with isButtonPressed: Bool, hasMinimumPreviewText: Bool) {
-        if !isButtonPressed && hasMinimumPreviewText {
+    private func checkButtonTitle(with isButtonPressed: Bool, previewTextHasMinimumWordCount: Bool) {
+        if !isButtonPressed && previewTextHasMinimumWordCount {
             expandCollapseToogleButton.setTitle("Expand", for: .normal)
-        } else if hasMinimumPreviewText {
+        } else if previewTextHasMinimumWordCount {
             expandCollapseToogleButton.setTitle("Collapse", for: .normal)
         } else {
-            expandCollapseToogleButton.isHidden = !hasMinimumPreviewText
+            expandCollapseToogleButton.isHidden = !previewTextHasMinimumWordCount
         }
     }
     
-    private func setTextContent(with text: String, isShowFullText: Bool) {
-        textContent.text = text
-        textContent.numberOfLines = isShowFullText ? 0 : 2
+    private func setPreviewTextLabel(with text: String, isShowFullText: Bool, previewTextHasMinimumWordCount: Bool) {
+        previewTextLabel.text = text
+        previewTextLabel.numberOfLines = isShowFullText || !previewTextHasMinimumWordCount ? 0 : 2
     }
 }

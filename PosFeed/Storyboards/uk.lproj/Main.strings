@@ -1,0 +1,33 @@
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "4TA-sP-djk"; */
+"4TA-sP-djk.title" = "Item";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "6WP-R9-E4R"; */
+"6WP-R9-E4R.text" = "Title";
+
+/* Class = "UILabel"; text = "❤️10"; ObjectID = "Ivv-Zf-2Xw"; */
+"Ivv-Zf-2Xw.text" = "❤️10";
+
+/* Class = "UILabel"; text = "❤️10"; ObjectID = "NDX-UO-jy6"; */
+"NDX-UO-jy6.text" = "❤️10";
+
+/* Class = "UINavigationItem"; title = "Posts"; ObjectID = "O89-7t-qSh"; */
+"O89-7t-qSh.title" = "Posts";
+
+/* Class = "UILabel"; text = "1 day ago"; ObjectID = "ePm-wL-YNx"; */
+"ePm-wL-YNx.text" = "1 day ago";
+
+/* Class = "UILabel"; text = "TItle"; ObjectID = "lgQ-Dl-7fu"; */
+"lgQ-Dl-7fu.text" = "TItle";
+
+/* Class = "UIButton"; normalTitle = "Expand"; ObjectID = "pye-ft-Ilf"; */
+"pye-ft-Ilf.normalTitle" = "Expand";
+
+/* Class = "UILabel"; text = "text content"; ObjectID = "u1f-sc-U0R"; */
+"u1f-sc-U0R.text" = "text content";
+
+/* Class = "UILabel"; text = "1 day ago"; ObjectID = "uz0-ah-omT"; */
+"uz0-ah-omT.text" = "1 day ago";
+
+/* Class = "UILabel"; text = "Text Content"; ObjectID = "xHg-gb-8Nr"; */
+"xHg-gb-8Nr.text" = "Text Content";

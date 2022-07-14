@@ -22,9 +22,10 @@ class PostFeedViewController: UIViewController {
     //MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Downloading..."
         postDataManager.delegate = self
         fetchData()
-        prepareViews()
+        setupTableView()
     }
     
     private func fetchData() {
@@ -39,8 +40,7 @@ class PostFeedViewController: UIViewController {
         }
     }
     
-    private func prepareViews() {
-        title = "Downloading..."
+    private func setupTableView() {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 230
     }
@@ -52,14 +52,14 @@ extension PostFeedViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let postID = postDataManager.posts[indexPath.row].postID
         
-        let vc = createPostDetailVC()
-        navigationController?.pushViewController(vc, animated: true)
+        let detailVC = createPostDetailVC()
+        navigationController?.pushViewController(detailVC, animated: true)
 
         natifePostDownloader.getOnePost(by: postID) {  result in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
-                    vc.postDetail = data.post
+                    detailVC.postDetail = data.post
                 }
             case .failure(let error):
                 print(error)
@@ -74,14 +74,19 @@ extension PostFeedViewController: UITableViewDataSource {
         postDataManager.posts.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostCell.reuseIdentifier, for: indexPath) as? PostCell else { return UITableViewCell() }
         
-        cell.delegate = self
-        
         let post = postDataManager.posts[indexPath.row]
-        cell.configure(with: post)
+        
+        cell.configure(titleText: post.title,
+                       previewText: post.previewText,
+                       likesText: post.likesText,
+                       timeAgoText: post.timeAgoText,
+                       isExpanded: post.isExpanded,
+                       previewTextHasMinimumWordCount: post.previewTextHasMinimumWordCount)
+        
+        cell.delegate = self
         
         return cell
     }
@@ -90,10 +95,10 @@ extension PostFeedViewController: UITableViewDataSource {
 //MARK: - PostCellDelegate
 extension PostFeedViewController: PostCellDelegate {
     func expandCollapseButtonPressed(cell: UITableViewCell) {
-        if let cellIndex = tableView.indexPath(for: cell) {
-            let row = cellIndex.row
+        if let indexPath = tableView.indexPath(for: cell) {
+            let row = indexPath.row
             postDataManager.posts[row].isExpanded.toggle()
-            tableView.reloadRows(at: [cellIndex], with: .automatic)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
 }
