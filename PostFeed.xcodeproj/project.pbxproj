@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32061FDA287F739700F33790 /* PostImageDownloaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32061FD9287F739600F33790 /* PostImageDownloaderProtocol.swift */; };
+		32061FDA287F739700F33790 /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32061FD9287F739600F33790 /* ImageDataLoader.swift */; };
 		321F0BF828782E11007C2B13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0BF728782E11007C2B13 /* AppDelegate.swift */; };
 		321F0BFA28782E11007C2B13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0BF928782E11007C2B13 /* SceneDelegate.swift */; };
 		321F0BFC28782E11007C2B13 /* PostFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0BFB28782E11007C2B13 /* PostFeedViewController.swift */; };
@@ -16,20 +16,20 @@
 		321F0C0428782E17007C2B13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 321F0C0228782E17007C2B13 /* LaunchScreen.storyboard */; };
 		321F0C1028782F54007C2B13 /* URLSession+dataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C0F28782F54007C2B13 /* URLSession+dataTask.swift */; };
 		321F0C1328782F6C007C2B13 /* NatifePostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C1228782F6C007C2B13 /* NatifePostInfo.swift */; };
-		321F0C1628782FA2007C2B13 /* NatifePostsDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C1528782FA2007C2B13 /* NatifePostsDownloader.swift */; };
-		321F0C1828782FDC007C2B13 /* PostDownloaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C1728782FDC007C2B13 /* PostDownloaderProtocol.swift */; };
+		321F0C1628782FA2007C2B13 /* NatifePostLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C1528782FA2007C2B13 /* NatifePostLoader.swift */; };
+		321F0C1828782FDC007C2B13 /* PostLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C1728782FDC007C2B13 /* PostLoader.swift */; };
 		321F0C1B2878304B007C2B13 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C1A2878304B007C2B13 /* Post.swift */; };
 		321F0C1F28783074007C2B13 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C1E28783074007C2B13 /* PostCell.swift */; };
 		321F0C2228783220007C2B13 /* PostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C2128783220007C2B13 /* PostDataManager.swift */; };
 		321F0C2428783366007C2B13 /* PostDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C2328783366007C2B13 /* PostDetail.swift */; };
 		321F0C2628783CC5007C2B13 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C2528783CC5007C2B13 /* PostDetailViewController.swift */; };
-		321F0C2828783D66007C2B13 /* NatifePostsImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C2728783D66007C2B13 /* NatifePostsImageDownloader.swift */; };
+		321F0C2828783D66007C2B13 /* NatifeImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321F0C2728783D66007C2B13 /* NatifeImageDataLoader.swift */; };
 		329232792879914F00293E36 /* DateComponents+timeAgoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329232782879914F00293E36 /* DateComponents+timeAgoText.swift */; };
 		3292327B2879B5BE00293E36 /* Date+calculateDiffBetweenCurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3292327A2879B5BE00293E36 /* Date+calculateDiffBetweenCurrentDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		32061FD9287F739600F33790 /* PostImageDownloaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageDownloaderProtocol.swift; sourceTree = "<group>"; };
+		32061FD9287F739600F33790 /* ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoader.swift; sourceTree = "<group>"; };
 		321F0BF428782E11007C2B13 /* PostFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		321F0BF728782E11007C2B13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		321F0BF928782E11007C2B13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,14 +40,14 @@
 		321F0C0528782E17007C2B13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		321F0C0F28782F54007C2B13 /* URLSession+dataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+dataTask.swift"; sourceTree = "<group>"; };
 		321F0C1228782F6C007C2B13 /* NatifePostInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatifePostInfo.swift; sourceTree = "<group>"; };
-		321F0C1528782FA2007C2B13 /* NatifePostsDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatifePostsDownloader.swift; sourceTree = "<group>"; };
-		321F0C1728782FDC007C2B13 /* PostDownloaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDownloaderProtocol.swift; sourceTree = "<group>"; };
+		321F0C1528782FA2007C2B13 /* NatifePostLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatifePostLoader.swift; sourceTree = "<group>"; };
+		321F0C1728782FDC007C2B13 /* PostLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLoader.swift; sourceTree = "<group>"; };
 		321F0C1A2878304B007C2B13 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		321F0C1E28783074007C2B13 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		321F0C2128783220007C2B13 /* PostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataManager.swift; sourceTree = "<group>"; };
 		321F0C2328783366007C2B13 /* PostDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetail.swift; sourceTree = "<group>"; };
 		321F0C2528783CC5007C2B13 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
-		321F0C2728783D66007C2B13 /* NatifePostsImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatifePostsImageDownloader.swift; sourceTree = "<group>"; };
+		321F0C2728783D66007C2B13 /* NatifeImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatifeImageDataLoader.swift; sourceTree = "<group>"; };
 		329232782879914F00293E36 /* DateComponents+timeAgoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents+timeAgoText.swift"; sourceTree = "<group>"; };
 		3292327A2879B5BE00293E36 /* Date+calculateDiffBetweenCurrentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+calculateDiffBetweenCurrentDate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,11 +99,12 @@
 		321F0BF628782E11007C2B13 /* PosFeed */ = {
 			isa = PBXGroup;
 			children = (
+				32F16FF22885E33700570C80 /* API */,
 				321F0C202878320F007C2B13 /* DataManagers */,
 				321F0C1C28783061007C2B13 /* Views */,
 				321F0C1928782FF4007C2B13 /* Models */,
 				321F0C1428782F96007C2B13 /* Services */,
-				321F0C1128782F61007C2B13 /* Data */,
+				32F16FF12885AFB300570C80 /* Protocols */,
 				321F0C0E28782F37007C2B13 /* Helpers */,
 				321F0C0B28782E23007C2B13 /* App */,
 				321F0C0D28782E3E007C2B13 /* Controllers */,
@@ -148,21 +149,11 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		321F0C1128782F61007C2B13 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				321F0C1228782F6C007C2B13 /* NatifePostInfo.swift */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		321F0C1428782F96007C2B13 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				321F0C1528782FA2007C2B13 /* NatifePostsDownloader.swift */,
-				321F0C2728783D66007C2B13 /* NatifePostsImageDownloader.swift */,
-				321F0C1728782FDC007C2B13 /* PostDownloaderProtocol.swift */,
-				32061FD9287F739600F33790 /* PostImageDownloaderProtocol.swift */,
+				321F0C1528782FA2007C2B13 /* NatifePostLoader.swift */,
+				321F0C2728783D66007C2B13 /* NatifeImageDataLoader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -216,6 +207,23 @@
 				321F0BFD28782E11007C2B13 /* Main.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		32F16FF12885AFB300570C80 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				321F0C1728782FDC007C2B13 /* PostLoader.swift */,
+				32061FD9287F739600F33790 /* ImageDataLoader.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		32F16FF22885E33700570C80 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				321F0C1228782F6C007C2B13 /* NatifePostInfo.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,15 +303,15 @@
 				321F0BFC28782E11007C2B13 /* PostFeedViewController.swift in Sources */,
 				329232792879914F00293E36 /* DateComponents+timeAgoText.swift in Sources */,
 				321F0C2228783220007C2B13 /* PostDataManager.swift in Sources */,
-				321F0C1828782FDC007C2B13 /* PostDownloaderProtocol.swift in Sources */,
+				321F0C1828782FDC007C2B13 /* PostLoader.swift in Sources */,
 				321F0BF828782E11007C2B13 /* AppDelegate.swift in Sources */,
 				321F0C1B2878304B007C2B13 /* Post.swift in Sources */,
 				321F0C1328782F6C007C2B13 /* NatifePostInfo.swift in Sources */,
 				321F0C1F28783074007C2B13 /* PostCell.swift in Sources */,
-				321F0C2828783D66007C2B13 /* NatifePostsImageDownloader.swift in Sources */,
-				32061FDA287F739700F33790 /* PostImageDownloaderProtocol.swift in Sources */,
+				321F0C2828783D66007C2B13 /* NatifeImageDataLoader.swift in Sources */,
+				32061FDA287F739700F33790 /* ImageDataLoader.swift in Sources */,
 				321F0BFA28782E11007C2B13 /* SceneDelegate.swift in Sources */,
-				321F0C1628782FA2007C2B13 /* NatifePostsDownloader.swift in Sources */,
+				321F0C1628782FA2007C2B13 /* NatifePostLoader.swift in Sources */,
 				321F0C1028782F54007C2B13 /* URLSession+dataTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,7 +389,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -436,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
