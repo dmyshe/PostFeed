@@ -9,7 +9,7 @@ import Foundation
 
 protocol PostDataManagerDelegate: AnyObject {
     func dataDownloaded()
-    func reloadTableView()
+    func postsChanged()
 }
 
 final class PostDataManager {
@@ -73,6 +73,6 @@ final class PostDataManager {
         case .ratings:
             posts =  sortedPostArrayByRatings
         }
-        delegate?.reloadTableView()
+        delegate?.postsChanged()
     }
 }

@@ -116,7 +116,7 @@ extension PostFeedViewController: PostDataManagerDelegate {
         }
     }
     
-    func reloadTableView() {
+    func postsChanged() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
