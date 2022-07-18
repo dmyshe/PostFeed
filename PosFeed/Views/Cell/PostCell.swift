@@ -25,7 +25,13 @@ final class PostCell: UITableViewCell {
     weak var delegate: PostCellDelegate?
     
     //MARK: - Methods
-    public func configure(titleText: String, previewText: String, likesText: String, timeAgoText: String, isExpanded: Bool, previewTextHasMinimumWordCount: Bool) {
+    public func configure(titleText: String,
+                          previewText: String,
+                          likesText: String,
+                          timeAgoText: String,
+                          isExpanded: Bool,
+                          previewTextHasMinimumWordCount: Bool) {
+        
         titleLabel.text = titleText
         likeLabel.text = likesText
         daysAgoLabel.text = timeAgoText
