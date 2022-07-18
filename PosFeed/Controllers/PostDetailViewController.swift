@@ -26,7 +26,7 @@ class PostDetailViewController: UIViewController {
     }
     
     //MARK: - Services
-    private let natifePostImageDownloader: PostImageDownloaderProtocol = NatifePostsImageDownloader()
+    private let loader: ImageDataLoader = NatifeImageDataLoader()
     
     //MARK: - Methods
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class PostDetailViewController: UIViewController {
     private func prepareUI() {
         guard let postDetail = postDetail, let url = URL(string: postDetail.postImageUrlString) else { return }
         
-        natifePostImageDownloader.downloadImageData(with: url) { [weak self] result in
+        loader.downloadImageData(with: url) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):

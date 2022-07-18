@@ -14,10 +14,10 @@ class PostFeedViewController: UIViewController {
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - DataManager
-    var postDataManager = PostDataManager()
+    private let postDataManager = PostDataManager()
     
     //MARK: - Services
-    private let natifePostDownloader: PostDownloaderProtocol = NatifePostsDownloader()
+    private let loader: PostLoader = NatifePostLoader()
     
     //MARK: - Methods
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class PostFeedViewController: UIViewController {
     }
     
     private func fetchData() {
-        natifePostDownloader.getAllPost { [weak self] result in
+        loader.downloadAllPost { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
@@ -55,7 +55,7 @@ extension PostFeedViewController: UITableViewDelegate {
         let detailVC = createPostDetailVC()
         navigationController?.pushViewController(detailVC, animated: true)
 
-        natifePostDownloader.getOnePost(by: postID) {  result in
+        loader.downloadOnePost(by: postID) {  result in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
@@ -144,8 +144,8 @@ extension PostFeedViewController {
     }
     
     private func createPostDetailVC() -> PostDetailViewController {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "PostDetailViewController") as! PostDetailViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PostDetailViewController") as! PostDetailViewController
         return vc
     }
 }
