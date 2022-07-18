@@ -1,5 +1,5 @@
 //
-//  NatifePostsImageDownloader.swift
+//  NatifeImageDataLoader.swift
 //  PosFeed
 //
 //  Created by Дмитро  on 06.07.2022.
@@ -13,7 +13,7 @@ enum DownloadImageError: Error {
     case invalidData
 }
 
-final class NatifePostsImageDownloader: PostImageDownloaderProtocol {
+final class NatifeImageDataLoader: ImageDataLoader {
     //MARK: - Properties
     private let session = URLSession.shared
 

@@ -1,5 +1,5 @@
 //
-//  NatifePostsDownloader.swift
+//  NatifePostLoader.swift
 //  PosFeed
 //
 //  Created by Дмитро  on 06.07.2022.
@@ -12,20 +12,20 @@ enum PostError: Error {
     case invalidData
 }
 
-final class NatifePostsDownloader: PostDownloaderProtocol  {
+final class NatifePostLoader: PostLoader  {
     //MARK: - Properties
     private var postInfo = NatifePostInfo()
     private let session = URLSession.shared
     
     //MARK: - Methods
     /// Download all post.
-    public func getAllPost(then completion: @escaping PostsHandler) {
+    public func downloadAllPost(then completion: @escaping PostsHandler) {
         let url = postInfo.urlForGetAllPost
         let dataTask = session.downloadAndDecodePostData(from: url, andSaveIn: completion)
         dataTask.resume()
     }
     /// Download one post by id.
-    public func getOnePost(by id: Int, then completion: @escaping PostDetailHandler) {
+    public func downloadOnePost(by id: Int, then completion: @escaping PostDetailHandler) {
         postInfo.set(id)
         let url = postInfo.urlForGetOnePost
         let dataTask = session.downloadAndDecodePostData(from: url, andSaveIn: completion)
